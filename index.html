@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" type="image/x-icon" href="niketas logo\NIKETAS- logo.png">
+  <title>Niketas · Graphic Designer & Visual Creator</title>
+  <!-- Font Awesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #e0e0e0;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-elevated: #141414;
+      --bg-card: #1c1c1c;
+      --border-light: #2a2a2a;
+      --text-primary: #f5f5f5;
+      --text-secondary: #b0b0b0;
+      --accent-orange: #f97316;
+      --accent-soft: #ff8c42;
+      --white: #ffffff;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent-orange);
+      border-radius: 2px;
+    }
+
+    section {
+      padding: 100px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      position: relative;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 0.3px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      background: transparent;
+      color: var(--white);
+    }
+
+    .btn-primary {
+      background: var(--accent-orange);
+      color: #0a0a0a;
+      border: 1px solid var(--accent-orange);
+      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #fb923c;
+      border-color: #fb923c;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border-light);
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(4px);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-orange);
+      background: rgba(249, 115, 22, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .btn-more {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      color: #ccc;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 500;
+      margin-top: 30px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-more:hover {
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+      background: rgba(249,115,22,0.05);
+    }
+
+    header {
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    /* Hero with live background */
+    #home {
+      position: relative;
+      overflow: hidden;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background: #0a0a0a;
+    }
+
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 450px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .photo-frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-placeholder {
+      width: 320px;
+      height: 380px;
+      background: linear-gradient(145deg, #1f1f1f, #181818);
+      border-radius: 40px;
+      border: 1px solid #2e2e2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+    }
+
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Filter buttons */
+    .filter-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .cat-btn {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      color: #c0c0c0;
+      padding: 8px 22px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cat-btn.active, .cat-btn:hover {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+      color: #0a0a0a;
+      font-weight: 600;
+    }
+
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #262626;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-orange);
+      box-shadow: 0 20px 30px rgba(249, 115, 22, 0.15);
+    }
+
+    .card-img {
+      height: 220px;
+      background: #252525;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-info {
+      padding: 20px;
+    }
+
+    .card-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .hidden-works {
+      display: none;
+    }
+
+    .hidden-works.show {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .case-study-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .case-preview {
+      background: #1e1e1e;
+      border-radius: 28px;
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .case-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .case-preview:hover img {
+      transform: scale(1.03);
+    }
+
+    .case-details h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .detail-block {
+      margin-bottom: 24px;
+    }
+
+    .detail-block strong {
+      color: var(--accent-orange);
+      display: block;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+    }
+
+    .hidden-cases {
+      display: none;
+    }
+
+    .hidden-cases.show {
+      display: block;
+      margin-top: 40px;
+    }
+
+    .about-flex {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .about-photo {
+      width: 200px;
+      height: 250px;
+      background: #1f1f1f;
+      border-radius: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #333;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .service-item {
+      background: var(--bg-elevated);
+      padding: 28px 18px;
+      border-radius: 20px;
+      border: 1px solid #262626;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .service-item i {
+      font-size: 2rem;
+      color: var(--accent-orange);
+      margin-bottom: 14px;
+    }
+
+    .testimonial-cards {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .testimonial {
+      background: var(--bg-card);
+      padding: 28px;
+      border-radius: 24px;
+      flex: 1 1 250px;
+      border: 1px solid #2a2a2a;
+    }
+
+    .social-links-large {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .social-circle {
+      width: 70px;
+      height: 70px;
+      background: #1c1c1c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #aaa;
+      transition: var(--transition);
+      border: 1px solid #2e2e2e;
+      text-decoration: none;
+    }
+
+    .social-circle:hover {
+      background: var(--accent-orange);
+      color: #0a0a0a;
+      transform: translateY(-5px);
+      border-color: var(--accent-orange);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      color: #555;
+    }
+
+    /* Lightbox styles */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-image {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(249, 115, 22, 0.3);
+      border: 2px solid rgba(249, 115, 22, 0.3);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      color: #ccc;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-grid, .case-study-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-bar">
+      <div class="logo">Niketas.</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#casestudy">Case Study</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section with live particle canvas -->
+    <section id="home">
+      <canvas id="particle-canvas"></canvas>
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Graphic Designer <br>& Visual Creator</h1>
+          <p class="hero-subtitle">I craft posters, branding, advertisements, and social media designs that connect brands with people.</p>
+          <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">
+            <img src="Nati.jpg" alt="Niketas">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section with working filters -->
+    <section id="portfolio">
+      <div class="container">
+        <h2>Selected Work</h2>
+        <div class="filter-categories" id="filterContainer">
+          <button class="cat-btn active" data-filter="all">All</button>
+          <button class="cat-btn" data-filter="branding">Branding</button>
+          <button class="cat-btn" data-filter="logo">Logo</button>
+          <button class="cat-btn" data-filter="posters">Posters</button>
+          <button class="cat-btn" data-filter="advertisements">Advertisements</button>
+          <button class="cat-btn" data-filter="social">Social Media</button>
+        </div>
+        <div class="masonry-grid" id="portfolioGrid">
+          <div class="project-card" data-category="branding logo"><div class="card-img"><img src="boston coffee/logo.png" alt="Boston Coffee Logo"></div><div class="card-info"><h3>Boston Coffee Logo</h3><p>Branding · identity</p></div></div>
+          <div class="project-card" data-category="branding"><div class="card-img"><img src="boston coffee/business card.jpg" alt="Boston Coffee Business Card"></div><div class="card-info"><h3>Boston Coffee Business Card</h3><p>Branding · identity</p></div></div>
+          <div class="project-card" data-category="posters social advertisements"><div class="card-img"><img src="boston coffee/poster.png" alt="Boston Coffee Poster"></div><div class="card-info"><h3>Boston Coffee Poster</h3><p>Poster · Social · Ad</p></div></div>
+          <div class="project-card" data-category="posters social advertisements"><div class="card-img"><img src="fanta\poster.png" alt="Fanta Soft Drink"></div><div class="card-info"><h3>Fanta Soft Drink</h3><p>Poster . Social . Ad</p></div></div>
+        </div>
+        <div class="hidden-works" id="morePortfolio">
+          <!-- best burger -->
+          <div class="project-card" data-category="branding logo"><div class="card-img"><img src="best burger\logo.png" alt="Best Burger Logo"></div><div class="card-info"><h3>Best Burger Logo</h3><p>Branding . identity</p></div></div>
+          <div class="project-card" data-category="branding"><div class="card-img"><img src="best burger\business card.png" alt="Best Burger Business Card"></div><div class="card-info"><h3>Best Burger Business Card</h3><p>Branding · identity</p></div></div>
+          <div class="project-card" data-category="posters social advertisements"><div class="card-img"><img src="best burger\poster 1.png" alt="Best Burger Poster 1"></div><div class="card-info"><h3>Best Burger Poster 1</h3><p>Poster · Social · Ad</p></div></div>
+          <div class="project-card" data-category="posters social advertisements"><div class="card-img"><img src="best burger\poster 2.png" alt="Best Burger Poster 2"></div><div class="card-info"><h3>Best Burger Poster 2</h3><p>Poster · Social · Ad</p></div></div>
+          <!-- moaze tech -->
+          <div class="project-card" data-category="branding logo"><div class="card-img"><img src="Moaze tech\logo.png" alt="Moaze Tech Logo"></div><div class="card-info"><h3>Moaze Tech Logo</h3><p>Branding . identity</p></div></div>
+          <div class="project-card" data-category="branding"><div class="card-img"><img src="Moaze tech\business card.jpg" alt="Moaze Tech Business Card"></div><div class="card-info"><h3>Moaze Tech Business Card</h3><p>Branding . identity</p></div></div>
+          <div class="project-card" data-category="posters social advertisements"><div class="card-img"><img src="Moaze tech\poster.png" alt="Moaze Tech Business Card"></div><div class="card-info"><h3>Moaze Tech Business Card</h3><p>Poster . Social . Ad</p></div></div>
+          <!-- truly unique -->
+          <div class="project-card" data-category="branding logo"><div class="card-img"><img src="truly unique\logo.png" alt="Truly Uinque Logo"></div><div class="card-info"><h3>Truly Uinque Logo</h3><p>Branding . identity</p></div></div>
+          <div class="project-card" data-category="branding"><div class="card-img"><img src="truly unique\business card.jpg" alt="Truly Uinque Business Card"></div><div class="card-info"><h3>Truly Uinque Business Card</h3><p>Branding . identity</p></div></div>
+          <div class="project-card" data-category="branding posters social"><div class="card-img"><img src="truly unique\yt banner.png" alt="Truly Uinque Youtube Banner"></div><div class="card-info"><h3>Truly Uinque Youtube Banner</h3><p>Branding . Poster . Social</p></div></div>
+          <div class="project-card" data-category="branding posters social"><div class="card-img"><img src="truly unique\facebook cover.png" alt="Truly Uinque Facebook Cover"></div><div class="card-info"><h3>Truly Uinque Facebook Cover</h3><p>Branding . Poster . Social</p></div></div>
+          <!-- teddy afro -->
+          <div class="project-card" data-category="posters advertisements"><div class="card-img"><img src="taddy afro\poster.png" alt="Teddy Afro Tracklist Poster"></div><div class="card-info"><h3>Teddy Afro Tracklist Poster</h3><p>Poster . Social</p></div></div>
+          <!-- j1 -->
+          <div class="project-card" data-category="posters advertisements social"><div class="card-img"><img src="j1\poster.jpg" alt="Jordan 1 Poster"></div><div class="card-info"><h3>Jordan 1 Poster</h3><p>Poster . Social . Ad</p></div></div>
+        </div>
+        <button class="btn-more" id="togglePortfolioBtn"><i class="fas fa-plus-circle"></i> More Work</button>
+      </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section id="casestudy">
+      <div class="container">
+        <h2>Case Study</h2>
+        <div class="case-study-grid" id="mainCase">
+          <div class="case-preview"><img src="boston coffee\logo.png" alt="Boston Coffee Logo Case Study"></div>
+          <div class="case-details">
+            <h3>Boston Coffee Logo Case Study</h3>
+            <div class="detail-block"><strong>Challenge</strong><p>Outdated visual identity.</p></div>
+            <div class="detail-block"><strong>Goal</strong><p>Modern brand system.</p></div>
+            <div class="detail-block"><strong>Design Process</strong><p>Research, sketching, prototyping.</p></div>
+            <div class="detail-block"><strong>Final Result</strong><p>Simple, Modern, Memorable Brand Identity.</p></div>
+          </div>
+        </div>
+        <div class="hidden-cases" id="moreCases">
+          <div class="case-study-grid" style="margin-top:30px;">
+            <div class="case-preview"><img src="truly unique\logo.png" alt="Truly unique Logo Case Study"></div>
+            <div class="case-details">
+              <h3>Truly unique Logo Case Study</h3>
+              <div class="detail-block"><strong>Challenge</strong><p>Sustainable design brief.</p></div>
+              <div class="detail-block"><strong>Goal</strong><p>Create Simple Visual Logo.</p></div>
+              <div class="detail-block"><strong>Process</strong><p>Research</p></div>
+              <div class="detail-block"><strong>Result</strong><p>Very Simple Logo</p></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-more" id="toggleCaseBtn"><i class="fas fa-plus-circle"></i> More Case Studies</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container about-flex">
+        <div class="about-photo">
+          <img src="Nati.jpg" alt="Niketas">
+        </div>
+        <div class="about-text">
+          <h2>About Niketas</h2>
+          <p>Hi, I'm Abel, a graphic designer and founder of Niketas. I specialize in creating logos, posters, branding, and social media designs that help businesses stand out. Through continuous learning and real-world projects, I'm developing my skills in visual communication and brand design, with a focus on creating work that is both creative and effective.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+      <div class="container">
+        <h2>Services</h2>
+        <div class="services-grid">
+          <div class="service-item"><i class="fas fa-pencil-ruler"></i><h3>Logo Design</h3></div>
+          <div class="service-item"><i class="fas fa-palette"></i><h3>Poster Design</h3></div>
+          <div class="service-item"><i class="fas fa-mobile-alt"></i><h3>Social Media Graphics</h3></div>
+          <div class="service-item"><i class="fas fa-fingerprint"></i><h3>Brand Identity</h3></div>
+          <div class="service-item"><i class="fas fa-bullhorn"></i><h3>Advertisement Design</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+        <div class="testimonial-cards">
+          <div class="testimonial"><p>"Thank you for sharing your work. The designs look great."</p><strong style="color:var(--accent-orange);">— Best Burger</strong></div>
+          <div class="testimonial"><p>"Clean and professional branding concept with a strong visual identity."</p><strong style="color:var(--accent-orange);">— Moaze Tech</strong></div>
+          <div class="testimonial"><p>"Creative redesign with a premium and modern brand feel."</p><strong style="color:var(--accent-orange);">— Boston Coffee</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container" style="text-align: center;">
+        <h2 style="display:inline-block;">Connect with me</h2>
+        <p style="color: #aaa; margin: 20px 0 30px;">Find me on social media or send an email</p>
+        <div class="social-links-large">
+          <a href="https://www.instagram.com/niketascreative/" class="social-circle" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="#" class="social-circle" title="Facebook"><i class="fab fa-facebook-f"></i></a> -->
+          <a href="https://www.tiktok.com/@niketascreative" class="social-circle" title="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="mailto:abelnaod1130@gmail.com" class="social-circle" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://t.me/abel_3011" class="social-circle" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+        <p style="margin-top: 35px; color: #666;">Niketas.netlify.app</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <!-- <button class="lightbox-close" onclick="closeLightbox()">&times;</button> -->
+    <!-- <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</button> -->
+    <img class="lightbox-image" id="lightboxImg" src="" alt="Portfolio image">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <!-- <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</button> -->
+  </div>
+
+  <footer>
+    <div class="container">© 2026 Niketas — Graphic Designer & Visual Creator.</div>
+  </footer>
+
+  <script>
+    (function() {
+      // --- Live particle background (canvas) ---
+      const canvas = document.getElementById('particle-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resizeCanvas() {
+          const section = document.getElementById('home');
+          if (section) {
+            width = section.offsetWidth;
+            height = section.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+          }
+        }
+
+        class Particle {
+          constructor() {
+            this.reset();
+          }
+          reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.4;
+            this.speedY = (Math.random() - 0.5) * 0.4;
+            this.opacity = Math.random() * 0.5 + 0.1;
+          }
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+              this.reset();
+            }
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(249, 115, 22, ${this.opacity})`;
+            ctx.fill();
+          }
+        }
+
+        function initParticles(count = 70) {
+          particles = [];
+          for (let i = 0; i < count; i++) {
+            particles.push(new Particle());
+          }
+        }
+
+        function animateParticles() {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach(p => {
+            p.update();
+            p.draw();
+          });
+          requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+          resizeCanvas();
+          initParticles(70);
+        });
+
+        resizeCanvas();
+        initParticles(70);
+        animateParticles();
+      }
+
+      // --- Working filter categories (supports multiple categories) ---
+      const filterButtons = document.querySelectorAll('#filterContainer .cat-btn');
+      const portfolioCards = document.querySelectorAll('#portfolioGrid .project-card');
+      const morePortfolioCards = document.querySelectorAll('#morePortfolio .project-card');
+
+      function filterCards(category) {
+        // Filter visible grid cards
+        portfolioCards.forEach(card => {
+          const categories = card.getAttribute('data-category').split(' ');
+          if (category === 'all' || categories.includes(category)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        // Filter hidden more cards (if visible)
+        morePortfolioCards.forEach(card => {
+          const categories = card.getAttribute('data-category').split(' ');
+          if (category === 'all' || categories.includes(category)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        // Update lightbox images array after filtering
+        updatePortfolioImages();
+      }
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const filterValue = this.getAttribute('data-filter');
+          filterCards(filterValue);
+        });
+      });
+
+      // Toggle more portfolio works
+      const togglePortfolioBtn = document.getElementById('togglePortfolioBtn');
+      const morePortfolio = document.getElementById('morePortfolio');
+      if (togglePortfolioBtn && morePortfolio) {
+        togglePortfolioBtn.addEventListener('click', function() {
+          morePortfolio.classList.toggle('show');
+          if (morePortfolio.classList.contains('show')) {
+            togglePortfolioBtn.innerHTML = '<i class="fas fa-minus-circle"></i> Show Less';
+            // re-apply current active filter to newly visible cards
+            const activeFilter = document.querySelector('#filterContainer .cat-btn.active');
+            if (activeFilter) {
+              filterCards(activeFilter.getAttribute('data-filter'));
+            }
+          } else {
+            togglePortfolioBtn.innerHTML = '<i class="fas fa-plus-circle"></i> More Work';
+          }
+          updatePortfolioImages();
+        });
+      }
+
+      // Toggle more case studies
+      const toggleCaseBtn = document.getElementById('toggleCaseBtn');
+      const moreCases = document.getElementById('moreCases');
+      if (toggleCaseBtn && moreCases) {
+        toggleCaseBtn.addEventListener('click', function() {
+          moreCases.classList.toggle('show');
+          if (moreCases.classList.contains('show')) {
+            toggleCaseBtn.innerHTML = '<i class="fas fa-minus-circle"></i> Show Less';
+          } else {
+            toggleCaseBtn.innerHTML = '<i class="fas fa-plus-circle"></i> More Case Studies';
+          }
+        });
+      }
+
+      // --- Lightbox functionality ---
+      let currentImageIndex = 0;
+      let portfolioImages = [];
+
+      function updatePortfolioImages() {
+        portfolioImages = [];
+        const visibleCards = document.querySelectorAll('.project-card:not([style*="display: none"]) .card-img img');
+        
+        visibleCards.forEach(img => {
+          const imageUrl = img.src;
+          const title = img.closest('.project-card').querySelector('h3').textContent;
+          portfolioImages.push({ url: imageUrl, title: title });
+        });
+      }
+
+      function openLightbox(imageUrl, caption) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        
+        // Find current image index
+        currentImageIndex = portfolioImages.findIndex(img => img.url === imageUrl);
+        if (currentImageIndex === -1) currentImageIndex = 0;
+        
+        lightboxImg.src = imageUrl;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add('active');
+        
+        // Prevent body scrolling
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      function changeImage(direction) {
+        if (portfolioImages.length === 0) return;
+        
+        currentImageIndex += direction;
+        
+        // Loop around
+        if (currentImageIndex >= portfolioImages.length) {
+          currentImageIndex = 0;
+        }
+        if (currentImageIndex < 0) {
+          currentImageIndex = portfolioImages.length - 1;
+        }
+        
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        
+        lightboxImg.src = portfolioImages[currentImageIndex].url;
+        lightboxCaption.textContent = portfolioImages[currentImageIndex].title;
+      }
+
+      // Make card images clickable
+      function initLightbox() {
+        const allCardImages = document.querySelectorAll('.card-img');
+        
+        allCardImages.forEach(card => {
+          card.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            if (img) {
+              const imageUrl = img.src;
+              const title = this.closest('.project-card').querySelector('h3').textContent;
+              updatePortfolioImages();
+              openLightbox(imageUrl, title);
+            }
+          });
+        });
+        
+        // Also make case study images clickable
+        const casePreviews = document.querySelectorAll('.case-preview');
+        casePreviews.forEach(preview => {
+          preview.style.cursor = 'pointer';
+          preview.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            if (img) {
+              const imageUrl = img.src;
+              const title = this.closest('.case-study-grid').querySelector('h3').textContent;
+              const lightbox = document.getElementById('lightbox');
+              const lightboxImg = document.getElementById('lightboxImg');
+              const lightboxCaption = document.getElementById('lightboxCaption');
+              lightboxImg.src = imageUrl;
+              lightboxCaption.textContent = title;
+              lightbox.classList.add('active');
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        });
+        
+        updatePortfolioImages();
+      }
+
+      // Close lightbox with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        }
+        if (e.key === 'ArrowLeft') {
+          changeImage(-1);
+        }
+        if (e.key === 'ArrowRight') {
+          changeImage(1);
+        }
+      });
+
+      // Click outside image to close
+      document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeLightbox();
+        }
+      });
+
+      // Initialize lightbox when page loads
+      window.addEventListener('DOMContentLoaded', initLightbox);
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
